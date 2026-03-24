@@ -1,0 +1,38 @@
+
+> ubuntu-nexus-frontend@0.0.1 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+Found 1 warning while optimizing generated CSS:
+
+Γöé   }
+Γöé }
+Γöé @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+Γöå        ^-- @import rules must precede all rules aside from @charset and @layer statements
+Γöå
+Γöé html, body, #root {
+Γöé   height: 100%;
+
+[32mΓ£ô[39m 2221 modules transformed.
+x Build failed in 2.14s
+error during build:
+src/main.tsx (6:9): "AuthProvider" is not exported by "src/hooks/useAuth.ts", imported by "src/main.tsx".
+file: C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/src/main.tsx:6:9
+
+4: import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+5: import App from './App';
+6: import { AuthProvider } from './hooks/useAuth';
+            ^
+7: import './index.css';
+
+    at getRollupError (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at Module.error (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:16946:16)
+    at Module.traceVariable (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:17400:29)
+    at ModuleScope.findVariable (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:15067:39)
+    at Identifier.bind (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:5415:40)
+    at CallExpression.bind (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:2802:28)
+    at CallExpression.bind (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:12114:15)
+    at Property.bind (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:2806:23)
+    at ObjectExpression.bind (file:///C:/Users/Hp/OneDrive/Documents/UbuntuNexus_/ubuntuWebRewk/frontend/node_modules/rollup/dist/es/shared/node-entry.js:2802:28)
