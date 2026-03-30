@@ -206,7 +206,7 @@ const Home: React.FC = () => {
             {/* Latest Insights (Static) */}
             <section className="py-24">
                 <div className="container mx-auto px-6">
-                    | <div className="flex justify-between items-end mb-12">
+                    <div className="flex justify-between items-end mb-12">
                         <div>
                             <h2 className="text-3xl font-bold text-navy mb-2">Latest Insights</h2>
                             <p className="text-navy/60">Thinking and writing from our team.</p>
