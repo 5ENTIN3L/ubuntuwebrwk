@@ -121,9 +121,8 @@ const Home: React.FC = () => {
                                     <button
                                         key={index}
                                         onClick={() => setCurrentSlide(index)}
-                                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                                            currentSlide === index ? 'bg-navy w-8' : 'bg-navy/30 w-2.5 hover:bg-navy/50'
-                                        }`}
+                                        className={`h-2.5 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-navy w-8' : 'bg-navy/30 w-2.5 hover:bg-navy/50'
+                                            }`}
                                     />
                                 ))}
                             </div>
@@ -207,17 +206,17 @@ const Home: React.FC = () => {
             {/* Latest Insights (Static) */}
             <section className="py-24">
                 <div className="container mx-auto px-6">
-                    <div className="flex justify-between items-end mb-12">
+                    | <div className="flex justify-between items-end mb-12">
                         <div>
                             <h2 className="text-3xl font-bold text-navy mb-2">Latest Insights</h2>
                             <p className="text-navy/60">Thinking and writing from our team.</p>
                         </div>
-                        <Link
+                        {/*<Link
                             to="/insights"
                             className="flex items-center gap-2 text-navy font-semibold hover:text-red transition-colors border border-navy/20 hover:border-red/40 px-4 py-2 rounded-full text-sm"
                         >
                             View all <ArrowRight className="w-4 h-4" />
-                        </Link>
+                        </Link>*/}
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
