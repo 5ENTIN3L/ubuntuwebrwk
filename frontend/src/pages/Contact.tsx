@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Twitter, Send } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Twitter, Send, Instagram, Facebook } from 'lucide-react';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -11,15 +11,42 @@ const Contact: React.FC = () => {
         message: ''
     });
 
+    const [status, setStatus] = useState<'' | 'submitting' | 'success' | 'error'>('');
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log('Form submitted:', formData);
-        alert("Thank you! We'll be in touch soon.");
+        setStatus('submitting');
+
+        try {
+            // NOTE: Replace "YOUR_ACCESS_KEY_HERE" with a free key from https://web3forms.com/
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    access_key: "4d1b10cf-1a41-4fe5-b58c-c6eaa1d752f0",
+                    subject: `New Contact Submission from ${formData.name}`,
+                    ...formData
+                })
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', organization: '', type: 'Community Member', message: '' });
+                setTimeout(() => setStatus(''), 5000);
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error(error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -33,9 +60,9 @@ const Contact: React.FC = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="flex flex-col justify-center"
                     >
-                        <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Let's Build Something</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Let's Connect</h1>
                         <p className="text-xl text-navy/70 mb-12">
-                            Ready to start your digital transformation? Or just want to say hi? We'd love to hear from you.
+                            Have questions, want to partner, or just want to say hi? We'd love to hear from you.
                         </p>
 
                         <div className="space-y-8 mb-12">
@@ -45,7 +72,7 @@ const Contact: React.FC = () => {
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-navy text-lg">Email Us</h3>
-                                    <a href="mailto:hello@ubuntunexus.org" className="text-navy/60 hover:text-red transition-colors">hello@ubuntunexus.org</a>
+                                    <a href="mailto:ubuntunexusafrica@gmail.com" className="text-navy/60 hover:text-red transition-colors">ubuntunexusafrica@gmail.com</a>
                                 </div>
                             </div>
 
@@ -63,13 +90,16 @@ const Contact: React.FC = () => {
                         <div>
                             <h3 className="font-bold text-navy text-lg mb-4">Follow Us</h3>
                             <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-navy hover:text-white hover:border-navy transition-all">
-                                    <Github size={20} />
-                                </a>
-                                <a href="#" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-red hover:text-white hover:border-red transition-all">
+                                <a href="https://www.linkedin.com/company/ubuntu-justice-and-peace-nexus/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-navy hover:text-white hover:border-navy transition-all">
                                     <Linkedin size={20} />
                                 </a>
-                                <a href="#" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-yellow hover:text-white hover:border-yellow transition-all">
+                                <a href="https://www.instagram.com/ubuntunexus/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-red hover:text-white hover:border-red transition-all">
+                                    <Instagram size={20} />
+                                </a>
+                                <a href="https://www.facebook.com/UbuntuNexus" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-navy hover:text-white hover:border-navy transition-all">
+                                    <Facebook size={20} />
+                                </a>
+                                <a href="https://x.com/ubuntunexus" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white border border-navy/10 rounded-full flex items-center justify-center text-navy/40 hover:bg-yellow hover:text-white hover:border-yellow transition-all">
                                     <Twitter size={20} />
                                 </a>
                             </div>
@@ -153,10 +183,23 @@ const Contact: React.FC = () => {
 
                             <button
                                 type="submit"
-                                className="w-full py-4 bg-navy text-white rounded-xl font-bold text-lg hover:bg-navy/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-navy/10"
+                                disabled={status === 'submitting'}
+                                className="w-full py-4 bg-navy text-white rounded-xl font-bold text-lg hover:bg-navy/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-navy/10 disabled:opacity-70"
                             >
-                                Send Message <Send size={18} />
+                                {status === 'submitting' ? 'Sending...' : (
+                                    <>Send Message <Send className="w-5 h-5" /></>
+                                )}
                             </button>
+                            {status === 'success' && (
+                                <p className="text-green-600 text-center font-medium mt-4">
+                                    Message sent successfully! We'll be in touch soon.
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-red text-center font-medium mt-4">
+                                    Something went wrong. Please try again or email us directly.
+                                </p>
+                            )}
                         </form>
                     </motion.div>
                 </div>

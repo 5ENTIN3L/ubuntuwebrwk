@@ -1,42 +1,27 @@
 import React from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Users, Code, Globe, ChevronRight, Heart, Shield, Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, ChevronLeft, ChevronRight, Users, Globe } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { articlesData } from '../utils/data';
+
+// Auto-discover every image from public/images/slideshow/ at build time via Vite glob.
+// Simply drop any image into public/images/slideshow/ and it auto-appears in the slideshow.
+// Staff photos go in public/images/staff/ — they are never included here.
+const imageModules = import.meta.glob('/public/images/slideshow/*', { eager: true, query: '?url', import: 'default' });
+const allSlideImages: string[] = Object.keys(imageModules)
+    .map((path) => path.replace('/public', ''))
+    .sort();   // stable alphabetic order so slides don't shuffle on every render
 
 const Home: React.FC = () => {
     const { scrollY } = useScroll();
     const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
     const [currentSlide, setCurrentSlide] = React.useState(0);
+    const navigate = useNavigate();
 
-    const slides = [
-        {
-            id: 1,
-            title: "Community First",
-            description: "Empowering locals to lead the change.",
-            icon: Users,
-            color: "bg-navy",
-            textColor: "text-white",
-            accent: "text-yellow"
-        },
-        {
-            id: 2,
-            title: "Action Oriented",
-            description: "Real solutions for real problems.",
-            icon: Zap,
-            color: "bg-red",
-            textColor: "text-white",
-            accent: "text-white"
-        },
-        {
-            id: 3,
-            title: "Healing & Justice",
-            description: "Restoring balance through mediation.",
-            icon: Heart,
-            color: "bg-yellow",
-            textColor: "text-navy",
-            accent: "text-navy"
-        }
-    ];
+    // Use all detected images; fall back to a placeholder if folder is empty
+    const slides = allSlideImages.length > 0
+        ? allSlideImages.map((src, i) => ({ id: i, bgImage: src, alt: `Ubuntu Nexus photo ${i + 1}` }))
+        : [{ id: 0, bgImage: '', alt: 'Ubuntu Nexus' }];
 
     React.useEffect(() => {
         const timer = setInterval(() => {
@@ -74,10 +59,10 @@ const Home: React.FC = () => {
                                 UBUNTU NEXUS
                             </div>
                             <h1 className="text-5xl md:text-7xl font-bold text-navy leading-tight mb-6">
-                                Building Peace Through <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-yellow">Community Action</span> and Healing.
+                                Building Peace Through <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-yellow">Shared Humanity</span> and Collective Action.
                             </h1>
-                            <p className="text-xl text-slate-600 max-w-xl mb-10 leading-relaxed">
-                                We reduce harm and prevent conflict by working directly with people. Addressing root causes through education, empowerment, and restorative justice.
+                            <p className="text-xl text-slate-600 max-w-xl mb-10 leading-relaxed font-medium">
+                                Empowering Youth. Amplifying Voices. Transforming Communities.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -97,49 +82,48 @@ const Home: React.FC = () => {
                             </div>
                         </motion.div>
 
-                        {/* Animated Slideshow */}
+                        {/* Animated Slideshow — pure image cycle */}
                         <div className="hidden lg:block relative h-[500px] w-full">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentSlide}
-                                    initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                                    exit={{ opacity: 0, x: -50, scale: 0.95 }}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                    className={`absolute inset-0 rounded-3xl shadow-2xl overflow-hidden ${slides[currentSlide].color} p-10 flex flex-col justify-between`}
+                                    initial={{ opacity: 0, scale: 1.02 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 1.02 }}
+                                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                                    className="absolute inset-0 rounded-3xl shadow-2xl overflow-hidden"
                                 >
-                                    <div className="flex justify-between items-start">
-                                        <div className={`p-4 rounded-2xl bg-white/20 backdrop-blur-md ${slides[currentSlide].accent}`}>
-                                            {React.createElement(slides[currentSlide].icon, { size: 40 })}
-                                        </div>
-                                        <div className={`text-6xl font-black opacity-20 ${slides[currentSlide].textColor}`}>
-                                            0{slides[currentSlide].id}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h2 className={`text-4xl font-bold mb-4 ${slides[currentSlide].textColor}`}>
-                                            {slides[currentSlide].title}
-                                        </h2>
-                                        <p className={`text-xl opacity-90 ${slides[currentSlide].textColor}`}>
-                                            {slides[currentSlide].description}
-                                        </p>
-                                    </div>
-
-                                    {/* Decorative Circles */}
-                                    <div className="absolute top-1/2 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                                    <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                                    <img
+                                        src={slides[currentSlide].bgImage}
+                                        alt={slides[currentSlide].alt}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </motion.div>
                             </AnimatePresence>
 
-                            {/* Slide Indicators */}
-                            <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex gap-3">
-                                {slides.map((slide, index) => (
+                            {/* Prev / Next arrows */}
+                            <button
+                                onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+                                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center shadow-md transition-all"
+                            >
+                                <ChevronLeft className="w-5 h-5 text-navy" />
+                            </button>
+                            <button
+                                onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center shadow-md transition-all"
+                            >
+                                <ChevronRight className="w-5 h-5 text-navy" />
+                            </button>
+
+                            {/* Dot indicators */}
+                            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+                                {slides.map((_, index) => (
                                     <button
-                                        key={slide.id}
+                                        key={index}
                                         onClick={() => setCurrentSlide(index)}
-                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-navy w-10' : 'bg-navy/30 hover:bg-navy/50'
-                                            }`}
+                                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                                            currentSlide === index ? 'bg-navy w-8' : 'bg-navy/30 w-2.5 hover:bg-navy/50'
+                                        }`}
                                     />
                                 ))}
                             </div>
@@ -163,12 +147,12 @@ const Home: React.FC = () => {
                             <div className="w-14 h-14 bg-red/10 rounded-2xl flex items-center justify-center mb-6 text-red">
                                 <Users className="w-7 h-7" />
                             </div>
-                            <h2 className="text-3xl font-bold text-navy mb-4">Community & Prevention</h2>
+                            <h2 className="text-3xl font-bold text-navy mb-4">Core Paradigm</h2>
                             <p className="text-navy/70 mb-6 text-lg">
-                                We believe crime stems from exclusion and lack of opportunity. We organize community forums, safety groups, and advocacy efforts to tackle these root causes together.
+                                Many of the challenges young people and their communities face—violence, exclusion, mistrust—are systemic. We work across multiple entry points because no single intervention alone produces sustainable change.
                             </p>
                             <Link to="/initiatives" className="text-red font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                                See our work <ChevronRight className="w-5 h-5" />
+                                See our flow <ChevronRight className="w-5 h-5" />
                             </Link>
                         </motion.div>
 
@@ -183,9 +167,9 @@ const Home: React.FC = () => {
                             <div className="w-14 h-14 bg-navy/50 border border-white/10 rounded-2xl flex items-center justify-center mb-6 text-yellow">
                                 <Globe className="w-7 h-7" />
                             </div>
-                            <h2 className="text-3xl font-bold mb-4">Education & Healing</h2>
+                            <h2 className="text-3xl font-bold mb-4">Justice & Peace</h2>
                             <p className="text-white/70 mb-6 text-lg">
-                                From youth leadership training to restorative justice circles, we focus on healing harm and building future leaders. We empower individuals to transform their own narratives.
+                                Justice and peace are outcomes of quality education, meaningful participation, and working together. We build inclusive, resilient communities by strengthening people, relationships, and systems — together.
                             </p>
                             <Link to="/initiatives" className="text-yellow font-semibold flex items-center gap-2 hover:gap-3 transition-all">
                                 Explore Programs <ChevronRight className="w-5 h-5" />
@@ -228,28 +212,32 @@ const Home: React.FC = () => {
                             <h2 className="text-3xl font-bold text-navy mb-2">Latest Insights</h2>
                             <p className="text-navy/60">Thinking and writing from our team.</p>
                         </div>
-                        <Link to="/insights" className="hidden md:flex items-center gap-2 text-navy font-medium hover:text-red transition-colors">
+                        <Link
+                            to="/insights"
+                            className="flex items-center gap-2 text-navy font-semibold hover:text-red transition-colors border border-navy/20 hover:border-red/40 px-4 py-2 rounded-full text-sm"
+                        >
                             View all <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="group cursor-pointer">
-                                <div className="bg-slate-200 aspect-[4/3] rounded-2xl mb-6 overflow-hidden relative">
-                                    <div className="absolute inset-0 bg-slate-300 group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">
-                                        Article Image {i}
-                                    </div>
+                        {articlesData.slice(0, 3).map((article) => (
+                            <a href={article.link} target="_blank" rel="noopener noreferrer" key={article.id} className="group cursor-pointer block">
+                                <div className="aspect-[4/3] rounded-2xl mb-6 overflow-hidden relative bg-slate-200 border border-slate-100 group-hover:shadow-md transition-all duration-300">
+                                    <img
+                                        src={article.image}
+                                        alt={article.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
                                 </div>
-                                <div className="text-sm text-red font-medium mb-2">Opinion</div>
+                                <div className="text-sm text-red font-medium mb-2 uppercase tracking-wide">{article.category}</div>
                                 <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-red transition-colors">
-                                    Understanding Root Causes of Conflict
+                                    {article.title}
                                 </h3>
                                 <p className="text-slate-500 line-clamp-2">
-                                    Why punitive measures fail and how community-led interventions create lasting safety.
+                                    {article.excerpt}
                                 </p>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>

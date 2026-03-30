@@ -5,6 +5,7 @@ import Home from './pages/Home';
 
 import About from './pages/About';
 import Initiatives from './pages/Initiatives';
+import Programs from './pages/Programs';
 import Insights from './pages/Insights';
 import Partners from './pages/Partners';
 import Contact from './pages/Contact';
@@ -16,6 +17,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="initiatives" element={<Initiatives />} />
+        <Route path="programs" element={<Programs />} />
         <Route path="insights" element={<Insights />} />
         <Route path="partners" element={<Partners />} />
         <Route path="contact" element={<Contact />} />

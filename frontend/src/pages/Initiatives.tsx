@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Monitor, BookOpen, UserCheck, ArrowRight } from 'lucide-react';
+import { Monitor, BookOpen, UserCheck, ShieldAlert, HeartHandshake, Scale, GraduationCap } from 'lucide-react';
 
 const Initiatives: React.FC = () => {
     return (
@@ -9,12 +9,12 @@ const Initiatives: React.FC = () => {
                 <div className="max-w-3xl mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Our Initiatives</h1>
                     <p className="text-xl text-navy/70">
-                        Our work is organized around three big pillars designed to address root causes, empower youth, and heal communities.
+                        Our work is organized around four big pillars designed to address root causes, empower youth, and heal communities.
                     </p>
                 </div>
 
                 <div className="space-y-24">
-                    {/* Section 1: Public Front */}
+                    {/* Pillar 1: Crime Prevention & Social Justice */}
                     <section className="grid md:grid-cols-2 gap-12 items-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -22,16 +22,75 @@ const Initiatives: React.FC = () => {
                             viewport={{ once: true }}
                         >
                             <div className="w-12 h-12 bg-red/10 text-red rounded-xl flex items-center justify-center mb-6">
-                                <Monitor className="w-6 h-6" />
+                                <ShieldAlert className="w-6 h-6" />
                             </div>
                             <h2 className="text-3xl font-bold text-navy mb-4">Crime Prevention & Social Justice</h2>
                             <p className="text-navy/70 text-lg leading-relaxed mb-8">
-                                We help communities understand why crime happens and give them tools to respond. This means addressing root causes like unemployment and social exclusion through collective action.
+                                We address the root causes of crime and social injustice by focusing on prevention, trust-building, access to justice and related advocacy rather than punishment alone.
                             </p>
                             <ul className="space-y-3 mb-8">
-                                {['Community Forums & Dialogue', 'Legal & Mental Health Resources', 'Policy Advocacy'].map((item) => (
+                                {['Community dialogue & safety conversations', 'Youth engagement around justice & accountability', 'Bridging gaps between communities & institutions', 'Reframing crime as a systems issue & advocacy'].map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-navy">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-red" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red flex-shrink-0" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                        <div className="relative group cursor-pointer p-4 md:p-8">
+                            <div className="absolute inset-0 bg-red/10 translate-x-4 translate-y-4 rounded-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                            <img src="/images/crime_prevention.png" alt="Crime Prevention" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3] -rotate-2 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-[1.02]" />
+                        </div>
+                    </section>
+
+                    {/* Pillar 2: Youth, Peace & Security (YPS) */}
+                    <section className="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="md:order-2"
+                        >
+                            <div className="w-12 h-12 bg-yellow/20 text-yellow rounded-xl flex items-center justify-center mb-6">
+                                <HeartHandshake className="w-6 h-6" />
+                            </div>
+                            <h2 className="text-3xl font-bold text-slate-900 mb-4">Youth, Peace & Security (YPS)</h2>
+                            <p className="text-navy/70 text-lg leading-relaxed mb-6">
+                                We work to position young people as active contributors to peace and security, not passive beneficiaries.
+                            </p>
+                            <ul className="space-y-3 mb-8">
+                                {['Peace education & peacebuilding initiatives', 'Youth-led dialogue & civic engagement', 'Addressing polarization, violence, and exclusion', 'Supporting youth participation in governance'].map((item) => (
+                                    <li key={item} className="flex items-center gap-3 text-navy">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-yellow flex-shrink-0" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                        <div className="relative group cursor-pointer p-8">
+                            <div className="absolute inset-0 bg-yellow/10 -translate-x-4 translate-y-4 rounded-2xl transition-transform duration-300 group-hover:-translate-x-2 group-hover:translate-y-2"></div>
+                            <img src="/images/youth_peace.png" alt="Youth Peace & Security" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3] rotate-2 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-[1.02]" />
+                        </div>
+                    </section>
+
+                    {/* Pillar 3: Restorative Justice & Reintegration */}
+                    <section className="grid md:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="w-12 h-12 bg-navy/10 text-navy rounded-xl flex items-center justify-center mb-6">
+                                <Scale className="w-6 h-6" />
+                            </div>
+                            <h2 className="text-3xl font-bold text-navy mb-4">Restorative Justice & Reintegration</h2>
+                            <p className="text-navy/70 text-lg leading-relaxed mb-6">
+                                We promote approaches that emphasize reconciliation, social healing, responsibility, and reintegration rather than stigma or exclusion.
+                            </p>
+                            <ul className="space-y-3 mb-8">
+                                {['Restorative dialogue & mediation foundations', 'Community-based conflict resolution', 'Supporting reintegration & second chances', 'Strengthening social cohesion & accountability'].map((item) => (
+                                    <li key={item} className="flex items-center gap-3 text-navy">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-navy/60 flex-shrink-0" />
                                         {item}
                                     </li>
                                 ))}
@@ -41,21 +100,15 @@ const Initiatives: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="bg-white rounded-2xl shadow-xl p-4 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-500"
                         >
-                            {/* Mockup Placeholder */}
-                            <div className="aspect-[16/10] bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex items-center justify-center relative">
-                                <div className="text-slate-400 font-medium">Website Mockup UI</div>
-                                {/* Abstract UI Elements */}
-                                <div className="absolute top-4 left-4 right-4 h-4 bg-slate-200 rounded-full w-1/3"></div>
-                                <div className="absolute top-12 left-4 right-4 h-32 bg-slate-200 rounded-lg"></div>
-                                <div className="absolute bottom-4 left-4 h-20 w-20 bg-slate-200 rounded-lg"></div>
-                                <div className="absolute bottom-4 left-28 right-4 h-20 bg-slate-200 rounded-lg"></div>
+                            <div className="relative group cursor-pointer p-4 md:p-8">
+                                <div className="absolute inset-0 bg-navy/10 translate-x-4 -translate-y-4 rounded-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2"></div>
+                                <img src="/images/restorative_justice.png" alt="Restorative Justice" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3] -rotate-2 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-[1.02]" />
                             </div>
                         </motion.div>
                     </section>
 
-                    {/* Section 2: Research Front (OKRI) */}
+                    {/* Pillar 4: Education & Empowerment */}
                     <section className="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -64,55 +117,24 @@ const Initiatives: React.FC = () => {
                             className="md:order-2"
                         >
                             <div className="w-12 h-12 bg-yellow/20 text-yellow rounded-xl flex items-center justify-center mb-6">
-                                <BookOpen className="w-6 h-6" />
+                                <GraduationCap className="w-6 h-6" />
                             </div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <h2 className="text-3xl font-bold text-slate-900">Education & Empowerment</h2>
-                            </div>
+                            <h2 className="text-3xl font-bold text-slate-900 mb-4">Education & Empowerment</h2>
                             <p className="text-navy/70 text-lg leading-relaxed mb-6">
-                                We focus on young people—from early childhood to young adults—to build a culture of peace. Through skills development, leadership training, and mentorship, we turn youth into confident leaders.
+                                We view education broadly — not only formal schooling, but access to knowledge, skills and opportunities.
                             </p>
-                            <a href="#" className="inline-flex items-center gap-2 text-yellow font-semibold hover:gap-3 transition-all">
-                                View Programs <ArrowRight className="w-4 h-4" />
-                            </a>
+                            <ul className="space-y-3 mb-8">
+                                {['Education & life skills', 'Mentorship & capacity-building', 'Access to information & opportunities', 'Digital literacy & responsible engagement', 'Pathways for growth beyond formal classrooms'].map((item) => (
+                                    <li key={item} className="flex items-center gap-3 text-navy">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-yellow flex-shrink-0" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="md:order-1 bg-navy rounded-2xl shadow-xl p-8"
-                        >
-                            <div className="space-y-4">
-                                <div className="h-4 bg-slate-800 rounded w-3/4"></div>
-                                <div className="h-4 bg-slate-800 rounded w-1/2"></div>
-                                <div className="h-32 bg-slate-800 rounded w-full border border-slate-700/50 flex items-center justify-center text-slate-600">
-                                    Repository Interface Preview
-                                </div>
-                            </div>
-                        </motion.div>
-                    </section>
-
-                    {/* Section 3: Internal Front (SCAP) */}
-                    <section className="grid md:grid-cols-2 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="w-12 h-12 bg-navy/10 text-navy rounded-xl flex items-center justify-center mb-6">
-                                <UserCheck className="w-6 h-6" />
-                            </div>
-                            <h2 className="text-3xl font-bold text-navy mb-4">Restorative Justice</h2>
-                            <h3 className="text-xl font-medium text-navy/80 mb-4">Conflict Transformation</h3>
-                            <p className="text-navy/70 text-lg leading-relaxed mb-6">
-                                Instead of punishment-first approaches, we support methods that focus on accountability, healing, and reintegration. We facilitate mediation and peace circles to repair relationships and reduce repeat harm.
-                            </p>
-                        </motion.div>
-                        <div className="bg-white rounded-2xl p-10 flex items-center justify-center border border-navy/10">
-                            <div className="text-center">
-                                <div className="text-5xl font-bold text-navy mb-2">Top 1%</div>
-                                <div className="text-navy/60 font-medium">Talent Verification</div>
-                            </div>
+                        <div className="relative group cursor-pointer p-8">
+                            <div className="absolute inset-0 bg-yellow/10 -translate-x-4 -translate-y-4 rounded-2xl transition-transform duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+                            <img src="/images/education_empowerment.png" alt="Education & Empowerment" className="relative z-10 rounded-2xl shadow-xl w-full object-cover aspect-[4/3] rotate-2 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-[1.02]" />
                         </div>
                     </section>
                 </div>

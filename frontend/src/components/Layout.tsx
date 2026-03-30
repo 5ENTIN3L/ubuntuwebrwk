@@ -20,8 +20,9 @@ const Layout: React.FC = () => {
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
         { name: 'Initiatives', path: '/initiatives' },
+        { name: 'Programs', path: '/programs' },
         { name: 'Insights', path: '/insights' },
-        { name: 'Partners', path: '/partners' },
+        { name: 'Collaborations', path: '/partners' },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -50,12 +51,14 @@ const Layout: React.FC = () => {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            to="/contact"
-                            className="bg-navy text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-navy/90 transition-colors shadow-lg shadow-navy/10"
-                        >
-                            Get Involved
-                        </Link>
+                        {location.pathname !== '/contact' && (
+                            <Link
+                                to="/contact"
+                                className="bg-navy text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-navy/90 transition-colors shadow-lg shadow-navy/10"
+                            >
+                                Get Involved
+                            </Link>
+                        )}
                     </nav>
 
                     {/* Mobile Menu Button */}
@@ -126,10 +129,11 @@ const Layout: React.FC = () => {
                         <div>
                             <h4 className="text-white font-semibold mb-4">Connect</h4>
                             <ul className="space-y-2">
-                                <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Twitter / X</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">GitHub</a></li>
-                                <li><a href="mailto:hello@ubuntunexus.org" className="hover:text-white transition-colors">hello@ubuntunexus.org</a></li>
+                                <li><a href="https://www.linkedin.com/company/ubuntu-justice-and-peace-nexus/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a></li>
+                                <li><a href="https://x.com/ubuntunexus" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter / X</a></li>
+                                <li><a href="https://www.instagram.com/ubuntunexus/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
+                                <li><a href="https://www.facebook.com/UbuntuNexus" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a></li>
+                                <li><a href="mailto:ubuntunexusafrica@gmail.com" className="hover:text-white transition-colors">ubuntunexusafrica@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
