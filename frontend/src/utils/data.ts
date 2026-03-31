@@ -2,7 +2,7 @@ export const articlesData = [
     {
         id: 1,
         title: "Labelling Young Offenders: How a Thief Becomes a Person",
-        category: "Youth, Peace & Security",
+        category: "Crime Prevention",
         author: "Ubuntu Nexus",
         date: "Recent",
         image: "https://media.licdn.com/dms/image/v2/D4E12AQFptsmxxDLfHA/article-cover_image-shrink_720_1280/B4EZy7coGZHkAI-/0/1772671373466?e=2147483647&v=beta&t=g46UQDfFfOD130YbQTwF-SND4BtpWKKf65y_gMxuylI",

@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
-        { name: 'Initiatives', path: '/initiatives' },
+        { name: 'Pillars', path: '/initiatives' },
         { name: 'Programs', path: '/programs' },
         { name: 'Insights', path: '/insights' },
         { name: 'Collaborations', path: '/partners' },
@@ -111,7 +111,7 @@ const Layout: React.FC = () => {
                                 Ubuntu Nexus
                             </Link>
                             <p className="text-slate-400 max-w-sm">
-                                Reducing harm, preventing crime, and building peace through community action and restorative justice.
+                                Building safe, participatory, cohesive, and dignified communities - one program, one dialogue, one young person at a time.
                             </p>
                         </div>
                         <div>

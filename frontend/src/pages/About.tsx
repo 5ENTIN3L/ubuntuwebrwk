@@ -65,20 +65,11 @@ const About: React.FC = () => {
 
     const fsbMembers = [
         {
-            id: 'fsb-1',
-            name: "FSB Member 1",
+            id: 'fsb-karlijn',
+            name: "Karlijn van der Poel",
             role: "Founding Strategic Board",
-            bio: "Bringing strategic direction, partnerships, and organizational guidance.",
-            fullBio: "Member of the Founding Strategic Board at Ubuntu Nexus. Works on outreach, helps with finding partners, funding, and provides general strategic advice.",
-            image: "",
-            socials: {}
-        },
-        {
-            id: 'fsb-2',
-            name: "FSB Member 2",
-            role: "Founding Strategic Board",
-            bio: "Bringing strategic direction, partnerships, and organizational guidance.",
-            fullBio: "Member of the Founding Strategic Board at Ubuntu Nexus. Works on outreach, helps with finding partners, funding, and provides general strategic advice.",
+            bio: "Human rights specialist and legal practitioner with experience in Kenya, Tanzania, and London, bringing international law expertise to Ubuntu Nexus's strategic direction.",
+            fullBio: "Karlijn is a member of Ubuntu Nexus' Founding Strategic Board.\n\nShe is currently pursuing a second postgraduate degree specializing in human rights at King's College London. She holds an undergraduate and first postgraduate degree in Law from Leiden University, Netherlands.\n\nKarlijn has spent extended periods in both Kenya and Tanzania, working with youth- and women-focused organizations. During this time, she gained valuable experience with various African legal and social systems and developed an understanding that meaningful change and justice do not stem solely from well‑intentioned ideals on paper, but require inclusive, community‑driven approaches from within rather than top‑down interventions.\n\nShe has completed several internships at law firms, including the global law firm DLA Piper. In addition, she has held multiple leadership positions, including at the Student Association Against Child Abuse and at the King's Lawyers Without Borders Society. She has also worked as a Legal Advisor for children and youth at a legal foundation and has taught several courses at Leiden University. Alongside her current studies, she contributes to refugee cases at a refugee law clinic in London.",
             image: "",
             socials: {}
         }
@@ -102,7 +93,7 @@ const About: React.FC = () => {
                         The Human Element
                     </motion.h1>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                        We are a community-driven initiative reducing harm, preventing crime, and building peace by working directly with people.
+                        Ubuntu Nexus recognizes that behind every statistic, every data point, and every report on violence, exclusion, marginalization, and injustice — are real people. People whose experiences are not inevitable, but are the result of conditions that can be changed. This belief drives our mission and the people who carry it forward.
                     </p>
                 </div>
             </section>
@@ -303,7 +294,7 @@ const About: React.FC = () => {
                     <div className="mt-20 pt-16 border-t border-slate-100">
                         <div className="text-center mb-10">
                             <h3 className="text-2xl font-bold text-slate-900 mb-2">Founding Strategic Board</h3>
-                            <p className="text-slate-500 text-sm">Working on outreach, partnerships, funding, and general advice.</p>
+                            <p className="text-slate-500 text-sm">Provides strategic direction, partnership development, and programmatic guidance to ensure Ubuntu Nexus grows in alignment with its vision, values, and long-term sustainability.</p>
                         </div>
                         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
                             {fsbMembers.map((fsb, idx) => (
@@ -347,14 +338,10 @@ const About: React.FC = () => {
                     <h2 className="text-3xl font-bold text-slate-900 mb-8">How We Understand Our Work</h2>
                     <div className="prose prose-lg mx-auto text-slate-600">
                         <p>
-                            Ubuntu Nexus is grounded in the understanding that:
-                            <strong> Many of the challenges young people and their communities face are systemic and relational.</strong>
+                            Many of the challenges young people and their communities face are not individual failures. Violence, exclusion, mistrust, digital harm, unemployment, disengagement, and marginalization are <strong>systemic and relational challenges</strong> with far-reaching human and societal consequences.
                         </p>
                         <p className="mt-4">
-                            Violence, exclusion, mistrust, digital harm, unemployment, disengagement, and marginalization are not individual failures. They are systemic and relational challenges with far-reaching human and societal consequences. Justice and peace, in our view, are not starting points. They are outcomes of inclusive education, meaningful participation, accountable systems, social cohesion, and empowered communities.
-                        </p>
-                        <p className="mt-6 text-xl font-medium text-navy">
-                            "Ubuntu Nexus is a youth-led organization building inclusive, resilient communities by strengthening people, relationships, and systems — together."
+                            They are outcomes of safe communities, accountable systems, social cohesion, equal protection, access to justice, meaningful participation, quality education, inclusion, economic dignity, opportunities for growth, and reintegration.
                         </p>
                     </div>
                 </div>

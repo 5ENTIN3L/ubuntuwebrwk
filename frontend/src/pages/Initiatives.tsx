@@ -7,9 +7,9 @@ const Initiatives: React.FC = () => {
         <div className="bg-cream min-h-screen pt-20">
             <div className="container mx-auto px-6 py-12">
                 <div className="max-w-3xl mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Our Initiatives</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Our Pillars</h1>
                     <p className="text-xl text-navy/70">
-                        Our work is organized around four big pillars designed to address root causes, empower youth, and heal communities.
+                        Our work is organized around four interconnected pillars. Each one is distinct, but none stands alone. Together, they reflect our belief that justice and peace are not entry points. They are outcomes.
                     </p>
                 </div>
 
@@ -29,7 +29,7 @@ const Initiatives: React.FC = () => {
                                 We address the root causes of crime and social injustice by focusing on prevention, trust-building, access to justice and related advocacy rather than punishment alone.
                             </p>
                             <ul className="space-y-3 mb-8">
-                                {['Community dialogue & safety conversations', 'Youth engagement around justice & accountability', 'Bridging gaps between communities & institutions', 'Reframing crime as a systems issue & advocacy'].map((item) => (
+                                {['Community dialogue & safety conversations', 'Youth engagement around justice & accountability', 'Bridging gaps between communities & institutions', 'Addressing crime as a systems issue & advocacy'].map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-navy">
                                         <div className="w-1.5 h-1.5 rounded-full bg-red flex-shrink-0" />
                                         {item}
@@ -121,7 +121,7 @@ const Initiatives: React.FC = () => {
                             </div>
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Education & Empowerment</h2>
                             <p className="text-navy/70 text-lg leading-relaxed mb-6">
-                                We view education broadly — not only formal schooling, but access to knowledge, skills and opportunities.
+                                We view education broadly beyond formal schooling - as access to knowledge, skills, and opportunities.
                             </p>
                             <ul className="space-y-3 mb-8">
                                 {['Education & life skills', 'Mentorship & capacity-building', 'Access to information & opportunities', 'Digital literacy & responsible engagement', 'Pathways for growth beyond formal classrooms'].map((item) => (

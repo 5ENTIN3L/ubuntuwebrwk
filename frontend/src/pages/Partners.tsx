@@ -9,9 +9,9 @@ const Partners: React.FC = () => {
 
                 {/* Header */}
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Organisations We've Worked With</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Work With Us</h1>
                     <p className="text-xl text-navy/70">
-                        While we are a growing organization building formal partnerships, we are proud to have collaborated alongside inspiring local organizations, schools, and community leaders to create lasting change.
+                        Ubuntu Nexus welcomes partnerships with organizations, institutions, and individuals who share our vision for a unified world where shared humanity, inclusion, and dignity shape how communities live, govern, and thrive.
                     </p>
                 </div>
                 {/* Partner with Us Section */}
@@ -20,9 +20,9 @@ const Partners: React.FC = () => {
 
                     <div className="grid md:grid-cols-2 gap-12 relative z-10">
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-6">Collaborate With Us</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-6">Work With Us</h2>
                             <p className="text-white/70 text-lg leading-relaxed mb-8">
-                                Whether you are a community organization, a school, or a donor, your collaboration helps us build a safer, more just society.
+                                Building safe, participatory, cohesive, and dignified communities - one program, one dialogue, one young person at a time.
                             </p>
                             <a href="/contact" className="inline-flex items-center px-6 py-3 bg-white text-navy rounded-full font-semibold hover:bg-cream transition-colors">
                                 Get In Touch <ArrowUpRight className="ml-2 w-5 h-5" />

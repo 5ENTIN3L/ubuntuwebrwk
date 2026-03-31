@@ -59,11 +59,8 @@ const Home: React.FC = () => {
                                 UBUNTU NEXUS
                             </div>
                             <h1 className="text-5xl md:text-7xl font-bold text-navy leading-tight mb-6">
-                                Building Peace Through <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-yellow">Shared Humanity</span> and Collective Action.
+                                Building safe, inclusive, <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-yellow">dignified, and cohesive communities.</span>
                             </h1>
-                            <p className="text-xl text-slate-600 max-w-xl mb-10 leading-relaxed font-medium">
-                                Empowering Youth. Amplifying Voices. Transforming Communities.
-                            </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link
@@ -151,7 +148,7 @@ const Home: React.FC = () => {
                                 Many of the challenges young people and their communities face—violence, exclusion, mistrust—are systemic. We work across multiple entry points because no single intervention alone produces sustainable change.
                             </p>
                             <Link to="/initiatives" className="text-red font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                                See our flow <ChevronRight className="w-5 h-5" />
+                                See our Pillars <ChevronRight className="w-5 h-5" />
                             </Link>
                         </motion.div>
 
@@ -168,7 +165,8 @@ const Home: React.FC = () => {
                             </div>
                             <h2 className="text-3xl font-bold mb-4">Justice & Peace</h2>
                             <p className="text-white/70 mb-6 text-lg">
-                                Justice and peace are outcomes of quality education, meaningful participation, and working together. We build inclusive, resilient communities by strengthening people, relationships, and systems — together.
+                                Justice and peace are not starting points. They are outcomes of safe communities, accountable systems, social cohesion, equal protection, access to justice, meaningful participation, quality education, inclusion, economic dignity, opportunities for growth, and reintegration.
+                                This is why our work is intentionally holistic. We do not pursue justice or peace as isolated goals. We build the conditions that make them possible, by strengthening individual and community agency, and the relationship between communities and the institutions that serve them.
                             </p>
                             <Link to="/initiatives" className="text-yellow font-semibold flex items-center gap-2 hover:gap-3 transition-all">
                                 Explore Programs <ChevronRight className="w-5 h-5" />
@@ -183,9 +181,9 @@ const Home: React.FC = () => {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {[
-                            { number: "3", label: "Core Pillars" },
-                            { number: "Countless", label: "Lives Impacted" },
-                            { number: "1", label: "Shared Mission" }
+                            { number: "4", label: "Core Pillars" },
+                            { number: "40+", label: "Lives Impacted" },
+                            { number: "1", label: "Founding Principle", sub: "Justice and peace are outcomes, not entry points." }
                         ].map((stat, idx) => (
                             <motion.div
                                 key={idx}
@@ -197,6 +195,7 @@ const Home: React.FC = () => {
                             >
                                 <div className="text-5xl font-bold text-slate-900 mb-2">{stat.number}</div>
                                 <div className="text-slate-500 font-medium uppercase tracking-wider text-sm">{stat.label}</div>
+                                {'sub' in stat && stat.sub && <div className="text-slate-400 text-xs mt-2 italic">{stat.sub}</div>}
                             </motion.div>
                         ))}
                     </div>
@@ -209,7 +208,7 @@ const Home: React.FC = () => {
                     <div className="flex justify-between items-end mb-12">
                         <div>
                             <h2 className="text-3xl font-bold text-navy mb-2">Latest Insights</h2>
-                            <p className="text-navy/60">Thinking and writing from our team.</p>
+                            <p className="text-navy/60">Our analysis of community, social realities, and systems change.</p>
                         </div>
                         {/*<Link
                             to="/insights"

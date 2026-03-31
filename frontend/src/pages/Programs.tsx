@@ -186,20 +186,20 @@ const allPrograms: Program[] = [
         ],
     },
 
-    // ── PAST: Wezesha Mentorship Initiative ───────────────────────────────────
+    // ── PAST: Wezesha Program ───────────────────────────────────────────────────
     {
         id: 'wezesha-mentorship',
-        title: 'Wezesha Mentorship Initiative',
+        title: 'Wezesha Program',
         category: 'Past',
         date: 'October – December 2025',
         location: 'Kenya',
-        excerpt: 'A youth-led empowerment program creating safe and transformative spaces for young people to build confidence, develop leadership skills, and strengthen their connection to community. Rooted in Ubuntu values.',
-        background: `The Wezesha Mentorship Initiative is a youth-led empowerment program that creates safe and transformative spaces for young people to build confidence, develop leadership skills, and strengthen their connection to community.\n\nRooted in Ubuntu values, the program combines group sessions, mentorship, and experiential learning to foster self-awareness, critical skills, and peer support. Participants gain practical abilities in communication, problem-solving, and leadership, while cultivating a sense of responsibility and active engagement in their communities.`,
+        excerpt: 'Wezesha, meaning "to empower", is an empowerment program by Ubuntu Nexus designed to create safe, engaging, and transformative spaces for young people to build confidence, discover their potential, and strengthen their connection to community.',
+        background: `Wezesha, meaning "to empower", is an empowerment program by Ubuntu Nexus designed to create safe, engaging, and transformative spaces for young people to build confidence, discover their potential, and strengthen their connection to community. Rooted in Ubuntu values, the program emphasizes collective growth, peer support, and the development of socially conscious young people.\n\nThrough structured group sessions, mentorship, and experiential learning, participants engage in reflection, dialogue, and skill-building across communication, problem-solving, conflict resolution, and leadership, while cultivating a deeper sense of responsibility toward themselves and their communities.\n\nTwo phases of Wezesha have been completed. Preparations for phase 3 are currently underway.`,
         outcomes: [
-            'Participants built measurable confidence, leadership, and communication skills.',
-            'Created lasting peer support networks grounded in Ubuntu values.',
-            'Strengthened participants\' sense of responsibility and community belonging.',
-            'Demonstrated the power of youth-led mentorship as a vehicle for transformative change.',
+            'Participants built measurable confidence and increased willingness to express ideas and take on active roles.',
+            'Strengthened peer networks and mentorship relationships providing ongoing support, guidance, and accountability.',
+            'Enhanced skills in communication, leadership, problem-solving, and interpersonal engagement.',
+            'Growing participant awareness of and engagement with community-related issues and responsibilities.',
         ],
         images: [
             // Paste Google Drive direct image URLs here
@@ -360,7 +360,7 @@ const ProgramOverlay: React.FC<{ program: Program; onClose: () => void }> = ({ p
                         {/* Background */}
                         {program.background && (
                             <div>
-                                <h3 className="text-lg font-bold text-navy mb-3">Background & Rationale</h3>
+                                <h3 className="text-lg font-bold text-navy mb-3">About Wezesha</h3>
                                 {program.background.split('\n\n').map((para, i) => (
                                     <p key={i} className="text-navy/70 leading-relaxed mb-4">{para}</p>
                                 ))}
