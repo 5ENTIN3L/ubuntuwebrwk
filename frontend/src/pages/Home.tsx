@@ -62,6 +62,10 @@ const Home: React.FC = () => {
                                 Building safe, inclusive, <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-yellow">dignified, and cohesive communities.</span>
                             </h1>
 
+                            <p className="text-xl text-navy/70 mb-8 font-medium">
+                                Empowering Youth. Amplifying Voices. Transforming Communities.
+                            </p>
+
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link
                                     to="/contact"

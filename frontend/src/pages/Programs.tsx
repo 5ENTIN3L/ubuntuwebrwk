@@ -35,6 +35,7 @@ interface Program {
     // Format: https://drive.google.com/uc?export=view&id=FILE_ID
     images?: string[];
     registerLink?: string;
+    reportLink?: string;
     // When true the meeting/register link is hidden even if date hasn't passed
     linkExpired?: boolean;
 }
@@ -325,17 +326,32 @@ const ProgramOverlay: React.FC<{ program: Program; onClose: () => void }> = ({ p
                             )}
                         </div>
 
-                        {/* Register CTA — only if link is still active */}
-                        {program.registerLink && linkActive && (
-                            <a
-                                href={program.registerLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-red text-white font-bold rounded-xl hover:bg-red/90 transition-colors shadow-md"
-                            >
-                                Register Now <ExternalLink className="w-4 h-4" />
-                            </a>
-                        )}
+                        {/* Action Buttons */}
+                        <div className="flex flex-wrap gap-4">
+                            {/* Register CTA — only if link is still active */}
+                            {program.registerLink && linkActive && (
+                                <a
+                                    href={program.registerLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-red text-white font-bold rounded-xl hover:bg-red/90 transition-colors shadow-md"
+                                >
+                                    Register Now <ExternalLink className="w-4 h-4" />
+                                </a>
+                            )}
+                            
+                            {/* Report CTA */}
+                            {program.reportLink && (
+                                <a
+                                    href={program.reportLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 border border-red text-red font-bold rounded-xl hover:bg-red/10 transition-colors shadow-sm"
+                                >
+                                    Read Full Report <ExternalLink className="w-4 h-4" />
+                                </a>
+                            )}
+                        </div>
 
                         {/* Speakers */}
                         {program.speakers && program.speakers.length > 0 && (
@@ -360,7 +376,9 @@ const ProgramOverlay: React.FC<{ program: Program; onClose: () => void }> = ({ p
                         {/* Background */}
                         {program.background && (
                             <div>
-                                <h3 className="text-lg font-bold text-navy mb-3">About Wezesha</h3>
+                                <h3 className="text-lg font-bold text-navy mb-3">
+                                    {program.title === 'Wezesha Program' ? 'About Wezesha' : 'About The Event'}
+                                </h3>
                                 {program.background.split('\n\n').map((para, i) => (
                                     <p key={i} className="text-navy/70 leading-relaxed mb-4">{para}</p>
                                 ))}
